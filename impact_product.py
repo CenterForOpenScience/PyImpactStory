@@ -13,7 +13,7 @@ class Product:
         
         # parsed bibliographic information 
         bib_info = raw_product.get('biblio', {})
-        self._parse_bib_info(bib_info)
+        self._parse_product_bib(bib_info)
         
         # parsed metrics
         self._currently_updating = raw_product.get('currently_updating', None)
@@ -37,12 +37,11 @@ class Product:
         self._pmc = alias.get('pmc', None)
         self._arxiv = alias.get('arxiv', None)
         
-    def _parse_bib_info(self, bib_info): 
+    def _parse_product_bib(self, bib_info): 
         self._genre = bib_info.get('genre', None)
         self._title = bib_info.get('title', None)
         self._authors = bib_info.get('authors', None)
         self._year = bib_info.get('year', None)
-        self._url = bib_info.get('url', None)
         self._free_fulltext_host = bib_info.get('published_date', None)
              
     def _parse_metrics(self, metrics):
@@ -50,7 +49,111 @@ class Product:
             for metric in metrics:
                 self._metrics.append(Metric(metrics))
 
+    @property
+    def tiid(self):
+        return self._tiid
     
+    @property
+    def awardedness score(self):
+        return self._awardedness_score
+    
+    @property
+    def aliases(self):
+        return self._aliases                
+    
+    @property
+    def bib_info(self):
+        return self._bib_info
+    
+    @property 
+    def currently_updating(self):
+        return self._currently_updating
+
+    @property
+    def has_metrics(self):
+        return self._has_metrics
+
+    @property 
+    def has_new_metrics(self):
+        return self._has_new_metrics
+    
+    @property 
+    def metric_by_name(self):
+        return self._metric_by_name
+    
+    @property 
+    def metrics(self):
+        return self._metrics 
+    
+    @property 
+    def is_true_product(self):
+        return self._is_true_product
+    
+    @property 
+    def latest_diff_timestamp(self):
+        return self._latest_diff_timestamp 
+    
+    @property 
+    def has_percentiles(self):
+        return self._has_percentiles
+    
+    @property 
+    def best_url(self):
+        return self._best_url
+    
+    @property 
+    def url(self):
+        return self._url
+    
+    @property 
+    def github(self):
+        return self._github
+    
+    @property
+    def altmetric_com(self):
+        return self._altmetric_com
+    
+    @property 
+    def doi(self):
+        return self._doi
+    
+    @property 
+    def pmid(self):
+        return self._pmid
+    
+    @property 
+    def uuid(self):
+        return self._uuid
+    
+    @property 
+    def pmc(self):
+        return self._pmc
+    
+    @property
+    def arxiv(self):
+        return self._arxiv
+
+    @property 
+    def genre(self):
+        return self._genre
+
+    @property 
+    def title(self):
+        return self._title
+
+    @property 
+    def authors(self):
+        return self._authors
+
+    @property 
+    def year(self): 
+        return self._year
+
+    @property 
+    def free_fulltext_host(self):
+        return self._free_fulltext_host
+
+
 class Article(Product):
     def __init__(self, raw_product):
         Product.__init__(self, raw_product)
@@ -66,7 +169,7 @@ class Article(Product):
         self._first_author = bib_info.get ('first_author', None)
         self._is_oa_journal = bib_info.get ('is_oa_journal', None)
         self._repository = bib_info.get ('repository', None)                                                 
-        self._full_citation = bib_info.get ('full_cituation', None)
+        self._full_citation = bib_info.get ('full_citation', None)
         self._published_date = bib_info.get('published_date', None)
         self._day = bib_info.get ('day', None)
         self._month = bib_info.get ('month', None)
@@ -74,7 +177,55 @@ class Article(Product):
         self._h1 = bib_info.get ('h1', None)
         self._oai_id = bib_info.get ('oai_id', None)
         self._free_fulltext_url = bib_info.get('free_fulltext_url', None)
- 
+    @property 
+    def issn(self):
+        return self._issn
+    @property 
+    def journal(self):
+        return self._journal
+    @property 
+    def number(self):
+        return self._number
+    @property 
+    def volume(self):
+        return self._volume
+    @property 
+    def first_page(self):
+        return self._first_page
+    @property 
+    def first_author(self):
+        return self._first
+   @property 
+   def is_oa_journal(self):
+        return self._is_oa_journal
+    @property 
+    def repository(self):
+        return self._repository
+    @property 
+    def full_citation(self):
+        return self._full_citation
+    @property 
+    def published_date(self):
+        return self._published_date
+    @property 
+    def day(self):
+        return self._day
+    @property 
+    def month(self):
+        return self._month
+    @property 
+    def full_citation_type(self):
+        return self._full_citation_type
+    @property 
+    def h1(self):
+        return self._h1
+    @property 
+    def oai_id(self):
+        return self._oai_id
+    @property 
+    def free_fulltext_url(self):
+        return self._free_fulltext_url
+
 class Metric:
     def __init__(self, raw_metrics):
         self._audience = raw_metrics.get('audience', None)
@@ -98,14 +249,74 @@ class Metric:
         # Percentiles includes CI95_lower, CI95_upper, estimate_lower,  
         # estimate_upper, refset, refset_storage_verb, indexed by, 
         # and top_percent
-        self.percentiles = raw_metrics.get('percentiles', {})
+        self._percentiles = raw_metrics.get('percentiles', {})
         self._provenance_url = raw_metrics.get('provenance_url', None)
         self._provider_name = raw_metrics.get('provider_name', None)
-        self.top_percentile = raw_metrics.get('top_percentile', None)
+        self._top_percentile = raw_metrics.get('top_percentile', None)
         self._metrics_raw_sum = raw_metrics.get('metrics_raw_sum', None)
         self._update_status = raw_metrics.get('update_status', None)
-        
-        
+    
+    @property 
+    def audience(self):
+        return self._audience
+    @property 
+    def display(self):
+        return self._display
+    @property 
+    def display_interaction(self):
+        return self._display_interaction
+    @property 
+    def display_order(self):
+        return self._display_order
+    @property 
+    def display_provider(self):
+        return self._display_provider
+    @property 
+    def engagement_type(self):
+        return self._engagement_type
+    @property 
+    def has_new_metric(self):
+        return self._has_new_metric
+    @property 
+    def hide_badge(self):
+        return self._hide_badge 
+    @property 
+    def collected_date(self):
+        return self._collected_date
+    @property 
+    def previous_value(self):
+        return self._previous_value  
+    @property 
+    def interaction(self):
+        return self._interaction 
+    @property 
+    def is_highly(self):
+        return self._is_highly 
+    @property 
+    def latest_nonzero_refresh_timestamp(self):
+        return self._latest_nonzero_refresh_timestamp
+    @property 
+    def metric_name(self):
+        return self._metric_name 
+    @property 
+    def percentiles(self):
+        return self._has_percentiles
+    @property 
+    def provenance_url(self):
+        return self._provenance_url 
+    @property 
+    def provider_name(self):
+        return self._provider_name
+    @property 
+    def top_percentile(self):
+        return self._top_percentile 
+    @property 
+    def metrics_raw_sum(self):
+        return self._metrics_raw_sum 
+    @property 
+    def update_status(self):
+        return self._update_status
+
 class Dataset(Product):
     def __init__(self, raw_product):
         Product.__init__(self, raw_product)
@@ -116,12 +327,16 @@ class Dataset(Product):
         self._published_date = bib_info.get('published_date', None)
         self._repository = bib_info.get('repository', None)
         self._is_oa_journal = bib_info.get('is_oa_journal', None)
-   
-    # Check if you can access both Dataset attributes as well as
-    # those inherited from Product 
-    def __str__():
-        return str(self._title) + " " + str(self._published_date) 
-     
+    
+    @property 
+    def published_date(self):
+        return self._published_date
+    @property 
+    def repository(self):
+        return self._repository 
+    @property 
+    def is_oa_journal(self):
+        return self._is_oa_journal
 
 class Figure(Product):
     def __init__(self, raw_product):
