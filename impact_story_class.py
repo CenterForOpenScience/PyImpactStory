@@ -88,4 +88,3 @@ class ImpactStory:
         for article in self._articles:
             article_titles.append(str(article.title))
         return article_titles
-
