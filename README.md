@@ -1,4 +1,4 @@
-Impact_Story
+Impact-Story
 ============
 
 Python library for Impact Story
