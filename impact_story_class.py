@@ -3,7 +3,13 @@ import json
 
 STATIC_URL = "https://impactstory.org/profile/"
 
-# Impact Story Class --> should be combined with impact_product
+'''
+ImpactStory Class 
+Retrieves JSON file from ImpactStory user profile,
+converts JSON to python dict, parses "projects" 
+dict & instantiates "project" objects (i.e. articles, datasets, figures) 
+'''
+
 class ImpactStory:
     def __init__(self, name):
         self._articles = [] 
@@ -14,6 +20,15 @@ class ImpactStory:
         self._unknown = []
         self._videos = [] 
         self._webpages = []
+        self._all = {'articles': self._articles, 
+                     'datasets': self._datasets,
+                     'figures': self._figures,
+                     'slides': self._slides,
+                     'software': self._software,
+                     'unknown': self._unknown,
+                     'videos': self._videos, 
+                     'webpages': self._webpages
+                     } 
         
         name = name.replace(" ", "")
         raw = requests.get(STATIC_URL + name + "?hide=markup,awards")
@@ -63,6 +78,10 @@ class ImpactStory:
         return self._datasets
     
     @property
+    def figures(self):
+        return self._figures
+
+    @property
     def slides(self):
         return self._slides  
 
@@ -82,9 +101,6 @@ class ImpactStory:
     def webpages(self):
         return self._webpages
 
-    # consider adding methods that get the names of each item in the product lists 
-    def article_titles(self):
-        article_titles = []
-        for article in self._articles:
-            article_titles.append(str(article.title))
-        return article_titles
+    @property 
+    def all(self):
+        return self._all
