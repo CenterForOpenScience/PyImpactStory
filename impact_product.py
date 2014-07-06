@@ -27,7 +27,7 @@ class Product:
         self._metrics = []
         self._has_metrics = raw_product.get('has_metrics', None) 
         
-        if (str(self._has_metrics).lower() == "true"):
+        if str(self._has_metrics).lower() == "true":
             self._parse_metrics(raw_product.get('metrics', None))
         
         self._display_metrics = []
@@ -70,17 +70,9 @@ class Product:
         return self._tiid
     
     @property
-    def awardedness score(self):
+    def awardedness_score(self):
         return self._awardedness_score
-    
-    @property
-    def aliases(self):
-        return self._aliases                
-    
-    @property
-    def bib_info(self):
-        return self._bib_info
-    
+
     @property 
     def currently_updating(self):
         return self._currently_updating
@@ -90,8 +82,8 @@ class Product:
         return self._has_metrics
 
     @property 
-    def has_new_metrics(self):
-        return self._has_new_metrics
+    def has_new_metric(self):
+        return self._has_new_metric
     
     @property 
     def metric_by_name(self):
@@ -172,6 +164,9 @@ class Product:
 class Metric:
     def __init__(self, raw_metrics):
         self._audience = raw_metrics.get('audience', None)
+        self._diff_value = raw_metrics.get('diff_value', None)
+        self._diff_window_length = raw_metrics.get('diff_window_length', None)
+
         self._display_count = raw_metrics.get('display_count', None)
         self._display_interaction = raw_metrics.get('display_interaction', None)
         self._display_order = raw_metrics.get('display_order', None)
@@ -179,11 +174,15 @@ class Metric:
         self._engagement_type = raw_metrics.get('engagement_type', None) 
         self._has_new_metric = raw_metrics.get('has_new_metric', None) 
         self._hide_badge = raw_metrics.get('hide_badge', None)
-        historical_values = raw_metrics.get('historical_values', None)
-        self._collected_date = historical_values.get('current', None).get('collected_date') 
-        previous_date = historical_values.get('previous', None).get('collected_date', None) 
-        previous_value = historical_values.get('previous', None).get('raw', None) 
-        self._previous_value = (previous_date, previous_value)
+
+        # previous metric values
+        most_recent_snap = raw_metrics.get('most_recent_snap', None)
+        self._last_collected_date = most_recent_snap.get('collected_date', None)
+        self._last_value = most_recent_snap.get('value', None)
+        self._drilldown_url = most_recent_snap.get('drilldown_url')
+
+        # add new metric values!!!!
+
         self._interaction = raw_metrics.get('interaction', None)
         self._is_highly = raw_metrics.get('_is_highly', None)
         self._latest_nonzero_refresh_timestamp = raw_metrics.get('latest_nonzero_refresh_timestamp', None)
@@ -198,7 +197,8 @@ class Metric:
         self._top_percentile = raw_metrics.get('top_percentile', None)
         self._metrics_raw_sum = raw_metrics.get('metrics_raw_sum', None)
         self._update_status = raw_metrics.get('update_status', None)
-        
+
+
     def __str__(self):
         return ("\naudience: " + str(self._audience)
                 + "\ndisplay_count: " + str(self._display_count)
@@ -208,8 +208,6 @@ class Metric:
                 + "\nengagement_type: " + str(self._engagement_type)
                 + "\nhas_new_metric: " + str(self._has_new_metric)
                 + "\nhide_badge: " + str(self._hide_badge)
-                + "\ncollected_date: " + str(self._collected_date) 
-                + "\nprevious_value: " + str(self._previous_value)
                 + "\ninteraction: " + str(self._interaction)
                 + "\nis_highly: " + str(self._is_highly)
                 + "\nlatest_nonzero_refresh_timestamp: " + str(self._latest_nonzero_refresh_timestamp)
@@ -220,8 +218,8 @@ class Metric:
         return self._audience
         
     @property 
-    def display(self):
-        return self._display
+    def display_count(self):
+        return self._display_count
         
     @property 
     def display_interaction(self):
@@ -248,14 +246,6 @@ class Metric:
         return self._hide_badge
         
     @property 
-    def collected_date(self):
-        return self._collected_date
-        
-    @property 
-    def previous_value(self):
-        return self._previous_value  
-        
-    @property 
     def interaction(self):
         return self._interaction
         
@@ -273,7 +263,7 @@ class Metric:
         
     @property 
     def percentiles(self):
-        return self._has_percentiles
+        return self._percentiles
         
     @property 
     def provenance_url(self):
@@ -322,7 +312,7 @@ class Article(Product):
     
     def __str__(self):
         return unicode("genre: " + str(self._genre)  
-                + "\ntitle: " + str(self._title) + 
+                + "\ntitle: " + str(self._title)
                 + "\nauthors: " + str(self._authors)
                 + "\nissn: " + str(self._issn)  
                 + "\njournal: " + str(self._journal)
@@ -340,7 +330,7 @@ class Article(Product):
                 + "\nfull_citation_type: " + str(self._full_citation_type)
                 + "\nh1: " + str(self._h1)
                 + "\noai_id: " + str(self._oai_id)
-                + "\nfree_fulltext_url: " + str(self_free_fulltext_url)
+                + "\nfree_fulltext_url: " + str(self._free_fulltext_url)
                 + "\nfree_fulltext_host: " + str(self._free_fulltext_host)
                 + "\nhas_metrics: " + str(self._has_metrics) 
                 + "\nmetrics: \n" + self._display_metrics + "\n")
