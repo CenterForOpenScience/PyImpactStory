@@ -36,6 +36,7 @@ class ImpactStoryParseException(ImpactStoryException):
 class ImpactStory:
     def __init__(self, name):
         self._new_attributes = []
+        self._unused_attributes = []
         self._articles = []
         self._datasets = []
         self._figures = []
@@ -67,22 +68,44 @@ class ImpactStory:
         else:
             raise ImpactStoryHTTPException(raw.status_code, raw.text)
 
-    '''
     def _check_changes(self, raw_dict):
-        # check if JSON file was changed
-        self._updated_dict(raw_dict["products"])
+        # iterate through product list to check for any changes
+        for item in raw_dict["products"]:
+            self._updated_dict(item)
 
+        # notify user of any changes
         if len(self._new_attributes) != 0:
-            print "WARNING: changes found in JSON file - print new attributes"
-            "\nIf you are interested in getting these attributes,"
-            "\nfile a bug report, otherwise continue using the library"
-        if len(self._new_attributes) == 0:
-            self._parse_raw(raw_dict)
+            print "WARNING: changes found in JSON file - print new attributes" \
+                  + "\nIf you are interested in getting these attributes,"\
+                  + "\nfile a bug report, otherwise continue using the library"
+        if len(self._unused_attributes) != 0:
+            print "The following attributes could not be found: " #list keys
 
-
-    # Method to find any changes in JSON file
+    # checks for keys added or removed from JSON
     def _updated_dict(self, raw_dict):
-        attribute_list = ['_tiid']
+        attribute_list = ['_tiid', 'awardedness_score','aliases', 'best_url', 'url',
+        'github', 'altmetric_com', 'doi', 'pmid', 'uuid', 'pmc', 'arxiv', 'biblio', 'genre',
+        'title', 'authors']
+
+        # Check for keys added to the JSON file
+        for attribute in raw_dict:
+            if type(attribute) is dict:
+                self._updated_dict(attribute)
+
+            else:
+                if attribute not in attribute_list and attribute not in self._new_attributes:
+                    self._new_attributes.append(attribute)
+
+                if type(raw_dict[attribute]) is dict or type(raw_dict[attribute]) is list:
+                    # recursive call on the sub-dict or list
+                    self._updated_dict(raw_dict[attribute])
+
+        '''
+        # Check for keys removed from the JSON file
+        for item in attribute_list:
+            if item not in raw_dict.keys():
+                item.append(self._unused_keys)
+        '''
 
         for key in raw_dict:
             if key not in attribute_list:
@@ -91,7 +114,11 @@ class ImpactStory:
             if type(raw_dict[key]) is dict or type(raw_dict[key]) is list:
                 # recursive call on the sub-dict or list
                 self._updated_dict(raw_dict[key])
-    '''
+
+        # Check for keys removed from the JSON file
+        for item in attribute_list:
+            if item not in raw_dict.keys():
+                item.append(self._unused_attributes)
 
     def _parse_raw(self, raw):
         self._parse_products(raw["products"])    

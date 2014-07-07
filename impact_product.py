@@ -49,7 +49,7 @@ class Product:
         self._title = bib_info.get('title', None) 
         self._authors = bib_info.get('authors', None)
         self._year = bib_info.get('year', None)
-        self._free_fulltext_host = bib_info.get('published_date', None)
+        self._free_fulltext_host = bib_info.get('free_fulltext_host', None)
     
     def _parse_metrics(self, metrics):
         for metric in metrics:
@@ -166,14 +166,17 @@ class Metric:
         self._audience = raw_metrics.get('audience', None)
         self._diff_value = raw_metrics.get('diff_value', None)
         self._diff_window_length = raw_metrics.get('diff_window_length', None)
-
         self._display_count = raw_metrics.get('display_count', None)
         self._display_interaction = raw_metrics.get('display_interaction', None)
         self._display_order = raw_metrics.get('display_order', None)
         self._display_provider = raw_metrics.get('display_provider', None) 
         self._engagement_type = raw_metrics.get('engagement_type', None) 
-        self._has_new_metric = raw_metrics.get('has_new_metric', None) 
+        self._fully_qualified_metric_name= raw_metrics.get('fully_qualified_metric_name', None)
+        self._has_new_metric = raw_metrics.get('has_new_metric', None)
         self._hide_badge = raw_metrics.get('hide_badge', None)
+        self._interaction = raw_metrics.get('interaction', None)
+        self._is_highly = raw_metrics.get('is_highly', None)
+        self._latest_nonzero_refresh_timestamp = raw_metrics.get('latest_nonzero_refresh_timestamp', None)
 
         # previous metric values
         most_recent_snap = raw_metrics.get('most_recent_snap', None)
@@ -181,22 +184,13 @@ class Metric:
         self._last_value = most_recent_snap.get('value', None)
         self._drilldown_url = most_recent_snap.get('drilldown_url')
 
-        # add new metric values!!!!
+        self._percentile = raw_metrics.get('percentile', {})
 
-        self._interaction = raw_metrics.get('interaction', None)
-        self._is_highly = raw_metrics.get('_is_highly', None)
-        self._latest_nonzero_refresh_timestamp = raw_metrics.get('latest_nonzero_refresh_timestamp', None)
-        self._metric_name= raw_metrics.get('metric_name', None)
-        
-        # Percentiles includes CI95_lower, CI95_upper, estimate_lower,  
-        # estimate_upper, refset, refset_storage_verb, indexed by, 
-        # and top_percent
-        self._percentiles = raw_metrics.get('percentiles', {})
-        self._provenance_url = raw_metrics.get('provenance_url', None)
+        #self._provenance_url = raw_metrics.get('provenance_url', None)
         self._provider_name = raw_metrics.get('provider_name', None)
-        self._top_percentile = raw_metrics.get('top_percentile', None)
-        self._metrics_raw_sum = raw_metrics.get('metrics_raw_sum', None)
-        self._update_status = raw_metrics.get('update_status', None)
+        #self._top_percentile = raw_metrics.get('top_percentile', None)
+        #self._metrics_raw_sum = raw_metrics.get('metrics_raw_sum', None)
+        #self._update_status = raw_metrics.get('update_status', None)
 
 
     def __str__(self):
