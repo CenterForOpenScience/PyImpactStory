@@ -1,7 +1,5 @@
 import json
 import requests
-
-
 from impact_product import Article
 from impact_product import Dataset
 from impact_product import Figure
@@ -39,7 +37,8 @@ class ImpactStoryParseException(ImpactStoryException):
 class ImpactStory:
     def __init__(self, name):
         #self._attribute_list = []
-        #self._new_attributes = [}
+        self._new_attributes = []
+        self._unused_attributes = []
         self._articles = [] 
         self._datasets = []
         self._figures = []
@@ -59,10 +58,33 @@ class ImpactStory:
                      } 
         
         name = name.replace(" ", "")
-
         raw = requests.get(STATIC_URL + name + "?hide=markup,awards")
         raw_dict = raw.json()
 
+        if raw.status_code == 200:
+            try:
+                #self._check_changes(raw_dict)
+                self._parse_raw(raw.json())
+            except ValueError:
+                raise ImpactStoryParseException(Exception.args)
+        else:
+            raise ImpactStoryHTTPException(raw.status_code, raw.text)
+
+     def _check_changes(self, raw_dict):
+        # iterate through product list to check for any changes
+        for item in raw_dict["products"]:
+            self._updated_dict(item)
+
+        # notify user of any changes
+        if len(self._new_attributes) != 0:
+            print "WARNING: changes found in JSON file - print new attributes" \
+                  + "\nIf you are interested in getting these attributes,"\
+                  + "\nfile a bug report, otherwise continue using the library"
+        if len(self._unused_attributes) != 0:
+            print "The following attributes could not be found: " #list keys
+
+    # checks for keys added or removed from JSON
+    def _updated_dict(self, raw_dict):
         attribute_list = ["tiid", "awardedness", "article", "dataset", "figure", "slides",\
                   "software", "unknown", "video", "webpage", "currently_updating",\
                   "has_percentiles", "is_true_product", "latest_diff_timestamp", \
@@ -79,27 +101,25 @@ class ImpactStory:
                   "h1", "oai_id" + "free_fulltext_url", "free_fulltext_host", "create_date", \
                   "description","last_push_date", "owner", 'channel_title']
 
+        # Check for keys added to the JSON file
+        for attribute in raw_dict:
+            if type(attribute) is dict:
+                self._updated_dict(attribute)
 
-        if raw.status_code == 200:
-            try:
-                self._parse_raw(raw.json())
-            except ValueError:
-                raise ImpactStoryParseException(Exception.args)
-        else:
-            raise ImpactStoryHTTPException(raw.status_code, raw.text)
+            else:
+                if attribute not in attribute_list and attribute not in self._new_attributes:
+                    self._new_attributes.append(attribute)
 
-        #check if JSON file was changed
+                if type(raw_dict[attribute]) is dict or type(raw_dict[attribute]) is list:
+                    # recursive call on the sub-dict or list
+                    self._updated_dict(raw_dict[attribute])
 
-    def _dict_change(self, raw_dict):
-
-        product_list = raw_dict["products"]
-        for key in product_list:
-            if type(product_list[key]) is dict:
-                self._check_dict(product_list[key])
-            else
-
-
-        
+        '''
+        # Check for keys removed from the JSON file
+        for item in attribute_list:
+            if item not in raw_dict.keys():
+                item.append(self._unused_keys)
+        '''
         
     def _parse_raw(self, raw):
         self._parse_products(raw["products"])    
