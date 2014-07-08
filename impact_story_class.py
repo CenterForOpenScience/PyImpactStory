@@ -35,7 +35,7 @@ class ImpactStoryParseException(ImpactStoryException):
 
 
 class ImpactStory:
-    def __init__(self, name):
+    def __init__(self, json_data):
         self._new_attributes = []
         self._articles = [] 
         self._datasets = []
@@ -59,6 +59,10 @@ class ImpactStory:
         name = name.replace(" ", "")
         raw = requests.get(STATIC_URL + name + "?hide=markup,awards")
         self._raw_dict = raw.json()
+
+        # comment above out and start assuming it's json
+        # self._raw_dict = json.loads(json_data)
+
 
         if raw.status_code == 200:
             try:
@@ -156,6 +160,23 @@ class ImpactStory:
 
                 else:
                     print ("End of Profile")
+
+    @classmethod
+    def from_id(cls, name):
+        # make request
+        # get request.json
+        obj = ImpactStory(res.json())
+        return obj
+
+    @classmethod
+    def from_file(cls, json_file):
+        '''
+            is = ImpactStory.from_file('tests/fixtures/jsonfilename.json')
+        '''
+        # read file,
+        with open(fi, 'r'):
+            obj = ImpactStory(fi.read())
+            return obj
 
     @property
     def raw_dict(self):

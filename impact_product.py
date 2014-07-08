@@ -7,7 +7,7 @@ Software, Video, Website & Unknown.
 # added profile_id & metrics_raw_sum
 class Product:
     def __init__(self, raw_product):
-        self._tiid = raw_product.get('_tiid', None)
+        self._tiid = str(raw_product.get('_tiid', ''))
         self._awardedness_score = raw_product.get('awardedness_score', None)
         self._profile_id = raw_product.get('profile_id')
 
