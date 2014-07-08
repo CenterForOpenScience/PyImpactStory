@@ -1,129 +1,44 @@
 from unittest import TestCase
-from impact_story_class import ImpactStory
 import json
+from impact_product import Product
 
-__author__ = 'saman'
+__author__ = 'ericabaranski'
 
 
 class TestProduct(TestCase):
-
     def setUp(self):
-        pass
+        raw_json = open("Heather_Products")
+        raw_dict = json.load(raw_json)
+        product_list = raw_dict.get("products")
+        self.p = Product(product_list[0])
+
+        self.assertFalse(self.p._currently_updating)
+        self.assertTrue(self.p._is_true_product)
+        self.assertTrue(self.p._latest_diff_timestamp)
+        self.assertTrue(self.p._profile_id)
+        self.assertTrue(self.p._metrics_raw_sum)
+
 
     def test__parse_aliases(self):
-        aliases_json = open('Heather_aliases')
-        aliases_dict = json.load(aliases_json)
-        alias = aliases_dict.get('aliases', None)
+        aliases = self.p.aliases
+        Product._parse_aliases(self.p, aliases)
 
-        self._best_url = alias.get('best_url', None)
-        self.assertTrue(self._best_url)
-
-        self._url = alias.get('url', None)
-        self.assertTrue(self._url)
-
-        self._github = alias.get('github', None)
-        self.assertFalse(self._github)
-
-        self._altmetric_com = alias.get('altmetric_com', None)
-        self.assertTrue(self._altmetric_com)
-
-        self._doi = alias.get('doi', None)
-        self.assertTrue(self._doi)
-
-        self._pmid = alias.get('pmid', None)
-        self.assertFalse(self._pmid)
-
-        self._uuid = alias.get('uuid', None)
-        self.assertFalse(self._uuid)
-
-        self._pmc = alias.get('pmc', None)
-        self.assertFalse(self._pmc)
-
-        self._arxiv = alias.get('arxiv', None)
-        self.assertFalse(self._arxiv)
-
+        self.assertTrue(self.p._best_url)
+        self.assertTrue(self.p._url)
+        self.assertFalse(self.p._github)
+        self.assertTrue(self.p._altmetric_com)
+        self.assertTrue(self.p._doi)
+        self.assertFalse(self.p._pmid)
+        self.assertFalse(self.p._uuid)
+        self.assertFalse(self.p._arxiv)
 
 
     def test__parse_product_bib(self):
-        pass
+        bib = self.p.bib_info
+        Product._parse_product_bib(self.p, bib)
 
-    def test__parse_metrics(self):
-        pass
-
-    def test_display_metrics(self):
-        pass
-
-
-    '''
-    def test_tiid(self):
-        self.fail()
-
-    def test_awardedness_score(self):
-        self.fail()
-
-    def test_currently_updating(self):
-        self.fail()
-
-    def test_has_metrics(self):
-        self.fail()
-
-    def test_has_new_metric(self):
-        self.fail()
-
-    def test_metric_by_name(self):
-        self.fail()
-
-    def test_metrics(self):
-        self.fail()
-
-    def test_is_true_product(self):
-        self.fail()
-
-    def test_latest_diff_timestamp(self):
-        self.fail()
-
-    def test_has_percentiles(self):
-        self.fail()
-
-    def test_best_url(self):
-        self.fail()
-
-    def test_url(self):
-        self.fail()
-
-    def test_github(self):
-        self.fail()
-
-    def test_altmetric_com(self):
-        self.fail()
-
-    def test_doi(self):
-        self.fail()
-
-    def test_pmid(self):
-        self.fail()
-
-    def test_uuid(self):
-        self.fail()
-
-    def test_pmc(self):
-        self.fail()
-
-    def test_arxiv(self):
-        self.fail()
-
-    def test_genre(self):
-        self.fail()
-
-    def test_title(self):
-        self.fail()
-
-    def test_authors(self):
-        self.fail()
-
-    def test_year(self):
-        self.fail()
-
-    def test_free_fulltext_host(self):
-        self.fail()
-    '''
+        self.assertTrue(self.p._genre)
+        self.assertTrue(self.p._title)
+        self.assertFalse(self.p._authors)
+        self.assertTrue(self.p._year)
+        self.assertFalse(self.p._free_fulltext_host)

@@ -1,0 +1,241 @@
+{
+    "slides": [
+        {
+            "_tiid": "fqly9hk9umdzzj3cxgf1yt9z",
+            "aliases": {
+                "best_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                "tiid": "fqly9hk9umdzzj3cxgf1yt9z",
+                "title": [
+                    "7 data citation challenges, illustrated with data (includes elephants)"
+                ],
+                "url": [
+                    "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants"
+                ]
+            },
+            "awardedness_score": 9,
+            "biblio": {
+                "calculated_genre": null,
+                "calculated_host": "slideshare",
+                "created": "2011-03-29 08:44:28 UTC",
+                "display_authors": null,
+                "display_title": "7 data citation challenges, illustrated with data (includes elephants)",
+                "display_year": "2011",
+                "free_fulltext_host": null,
+                "repository": "Slideshare",
+                "title": "7 data citation challenges, illustrated with data (includes elephants)",
+                "username": "hpiwowar",
+                "year": "2011"
+            },
+            "created": "2014-03-28T02:06:24.414773",
+            "display_genre_plural": "slides",
+            "genre": "slides",
+            "get_metric_by_name": {},
+            "has_diff": true,
+            "has_metrics": true,
+            "host": "slideshare",
+            "is_true_product": true,
+            "last_modified": "2014-03-28T02:06:31.583305",
+            "last_update_run": "2014-03-28T02:06:24.414773",
+            "latest_diff_timestamp": "2014-06-26T19:21:07.895501",
+            "mendeley_discipline": null,
+            "metric_by_name": {},
+            "metrics": [
+                {
+                    "audience": "public",
+                    "diff_value": 0,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 14,
+                    "display_interaction": "downloads",
+                    "display_order": 14,
+                    "display_provider": "Slideshare",
+                    "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                    "engagement_type": "viewed",
+                    "fully_qualified_metric_name": "slideshare:downloads",
+                    "hide_badge": false,
+                    "interaction": "downloads",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:06.881348",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:06.881348",
+                        "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                        "percentile": {
+                            "genre": "slides",
+                            "genre_plural": "slides",
+                            "host": "slideshare",
+                            "interaction": "downloads",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "slideshare",
+                            "value": 74,
+                            "year": "2011"
+                        },
+                        "value": 14
+                    },
+                    "percentile": {
+                        "genre": "slides",
+                        "genre_plural": "slides",
+                        "host": "slideshare",
+                        "interaction": "downloads",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "slideshare",
+                        "value": 74,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "74th",
+                    "provider": "slideshare",
+                    "provider_name": "slideshare"
+                },
+                {
+                    "audience": "public",
+                    "diff_value": 5,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 2091,
+                    "display_interaction": "views",
+                    "display_order": 100002091,
+                    "display_provider": "Slideshare",
+                    "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                    "engagement_type": "viewed",
+                    "fully_qualified_metric_name": "slideshare:views",
+                    "hide_badge": false,
+                    "interaction": "views",
+                    "is_highly": true,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:06.831804",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:06.831804",
+                        "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                        "percentile": {
+                            "genre": "slides",
+                            "genre_plural": "slides",
+                            "host": "slideshare",
+                            "interaction": "views",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "slideshare",
+                            "value": 75,
+                            "year": "2011"
+                        },
+                        "value": 2091
+                    },
+                    "percentile": {
+                        "genre": "slides",
+                        "genre_plural": "slides",
+                        "host": "slideshare",
+                        "interaction": "views",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "slideshare",
+                        "value": 75,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "75th",
+                    "provider": "slideshare",
+                    "provider_name": "slideshare"
+                },
+                {
+                    "audience": "public",
+                    "diff_value": 0,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 8,
+                    "display_interaction": "favorites",
+                    "display_order": 100000008,
+                    "display_provider": "Slideshare",
+                    "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                    "engagement_type": "recommended",
+                    "fully_qualified_metric_name": "slideshare:favorites",
+                    "hide_badge": false,
+                    "interaction": "favorites",
+                    "is_highly": true,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:06.856322",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:06.856322",
+                        "drilldown_url": "http://www.slideshare.net/hpiwowar/7-data-citation-challenges-illustrated-with-data-includes-elephants",
+                        "percentile": {
+                            "genre": "slides",
+                            "genre_plural": "slides",
+                            "host": "slideshare",
+                            "interaction": "favorites",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "slideshare",
+                            "value": 98,
+                            "year": "2011"
+                        },
+                        "value": 8
+                    },
+                    "percentile": {
+                        "genre": "slides",
+                        "genre_plural": "slides",
+                        "host": "slideshare",
+                        "interaction": "favorites",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "slideshare",
+                        "value": 98,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "98th",
+                    "provider": "slideshare",
+                    "provider_name": "slideshare"
+                },
+                {
+                    "audience": "public",
+                    "diff_value": 0,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 3,
+                    "display_interaction": "bookmarks",
+                    "display_order": 100000003,
+                    "display_provider": "Delicious",
+                    "drilldown_url": "http://delicious.com/link/dc7b6e7aa4ff339ae08daaa34ada02a2",
+                    "engagement_type": "saved",
+                    "fully_qualified_metric_name": "delicious:bookmarks",
+                    "hide_badge": false,
+                    "interaction": "bookmarks",
+                    "is_highly": true,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:07.895501",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:07.895501",
+                        "drilldown_url": "http://delicious.com/link/dc7b6e7aa4ff339ae08daaa34ada02a2",
+                        "percentile": {
+                            "genre": "slides",
+                            "genre_plural": "slides",
+                            "host": "slideshare",
+                            "interaction": "bookmarks",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "delicious",
+                            "value": 98,
+                            "year": "2011"
+                        },
+                        "value": 3
+                    },
+                    "percentile": {
+                        "genre": "slides",
+                        "genre_plural": "slides",
+                        "host": "slideshare",
+                        "interaction": "bookmarks",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "delicious",
+                        "value": 98,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "98th",
+                    "provider": "delicious",
+                    "provider_name": "delicious"
+                }
+            ],
+            "metrics_raw_sum": 2116,
+            "profile_id": 2325,
+            "removed": null,
+            "tiid": "fqly9hk9umdzzj3cxgf1yt9z",
+            "to_dict": {},
+            "to_markup_dict": {},
+            "year": "2011"
+        }
+    ]
+}

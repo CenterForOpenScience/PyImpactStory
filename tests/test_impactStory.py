@@ -17,23 +17,10 @@ __author__ = 'saman'
 class TestImpactStory(TestCase):
 
     def setUp(self):
-        self._articles = []
-        self._datasets = []
-        self._figures = []
-        self._slides = []
-        self._software = []
-        self._unknown = []
-        self._videos = []
-        self._webpages = []
-        self._all = {'articles': self._articles,
-                     'datasets': self._datasets,
-                     'figures': self._figures,
-                     'slides': self._slides,
-                     'software': self._software,
-                     'unknown': self._unknown,
-                     'videos': self._videos,
-                     'webpages': self._webpages
-                     }
+        self.heather = ImpactStory("Heather Piwowar")
+        self.saman = ImpactStory("Saman Ehsan")
+        self.brian = ImpactStory("Brian Nosek")
+        self.raw = requests.get("https://impactstory.org/profile/HthrPwr?hide=markup,awards")
 
     # tests making a GET request given an incorrect name
     def test_wrong_username(self):
@@ -48,114 +35,61 @@ class TestImpactStory(TestCase):
         class ImpactStoryParseException(ImpactStoryException):
             pass
 
-        url = "https://impactstory.org/profile/"
-        name = "Hther Pwr"
-        name = name.replace(" ", "")
-        raw = requests.get(url + name + "?hide=markup,awards")
+        self.failUnlessRaises(ImpactStoryHTTPException(self.raw.status_code, self.raw.text))
 
-        if raw.status_code == 200:
-            try:
-                self._parse_raw(raw.json())
-            except ValueError as exception:
-                raise ImpactStoryParseException(exception.message)
-        else:
-            self.failUnlessRaises(ImpactStoryHTTPException(raw.status_code, raw.text))
-
-    # User with all possible product types
-    def test__parse_products(self):
+    # JSON with no new attributes
+    def test_updated_dict(self):
         product_json = open('Heather_Products')
         product_dict = json.load(product_json)
         product_list = product_dict.get('products', None)
+        ImpactStory._updated_dict(self.heather, product_list)
+        self.assertFalse(self.heather._new_attributes)
 
-        for product in product_list:
-            if '_tiid' in product:
-                self.assertTrue('_tiid' in product)
 
-                if product["genre"] == "article":
-                    self.assertTrue(product["genre"] == "article")
-                    self._articles.append(Article(product))
-                    num = len(self._articles)
-                    self.assertTrue(type(self._articles[num - 1]))
+    # User with all possible product types
+    def test__parse_products_all(self):
+        product_json = open('Heather_Products')
+        product_dict = json.load(product_json)
+        product_list = product_dict.get('products', None)
+        ImpactStory._parse_products(self.heather, product_list)
 
-                elif product["genre"] == "dataset":
-                    self.assertTrue(product["genre"] == "dataset")
-                    self._datasets.append(Dataset(product))
-                    num = len(self._datasets)
-                    self.assertTrue(type(self._datasets[num - 1]))
+        self.assertTrue(self.heather.articles)
+        self.assertTrue(self.heather.datasets)
+        self.assertTrue(self.heather.figures)
+        self.assertTrue(self.heather.slides)
+        self.assertTrue(self.heather.software)
+        self.assertTrue(self.heather.unknown)
+        self.assertTrue(self.heather.videos)
+        self.assertTrue(self.heather.webpages)
 
-                elif product["genre"] == "figure":
-                    self.assertTrue(product["genre"] == "figure")
-                    self._figures.append(Figure(product))
-                    num = len(self._figures)
-                    self.assertTrue(type(self._figures[num - 1]))
+    # User with no products
+    def test__parse_products_none(self):
+        product_json = open('Saman_Products')
+        product_dict = json.load(product_json)
+        product_list = product_dict.get('products', None)
+        ImpactStory._parse_products(self.saman, product_list)
 
-                elif product["genre"] == "slides":
-                    self.assertTrue(product["genre"] == "slides")
-                    self._slides.append(Slides(product))
-                    num = len(self._slides)
-                    self.assertTrue(type(self._slides[num - 1]))
+        self.assertFalse(self.saman.articles)
+        self.assertFalse(self.saman.datasets)
+        self.assertFalse(self.saman.figures)
+        self.assertFalse(self.saman.slides)
+        self.assertFalse(self.saman.software)
+        self.assertFalse(self.saman.unknown)
+        self.assertFalse(self.saman.videos)
+        self.assertFalse(self.saman.webpages)
 
-                elif product["genre"] == "software":
-                    self.assertTrue(product["genre"] == "software")
-                    self._software.append(Software(product))
-                    num = len(self._software)
-                    self.assertTrue(type(self._software[num - 1]))
+    # Typical user
+    def test__parse_products(self):
+        product_json = open('Brian_Products')
+        product_dict = json.load(product_json)
+        product_list = product_dict.get('products', None)
+        ImpactStory._parse_products(self.brian, product_list)
 
-                elif product["genre"] == "unknown":
-                    self.assertTrue(product["genre"] == "unknown")
-                    self._unknown.append(Unknown(product))
-                    num = len(self._unknown)
-                    self.assertTrue(type(self._unknown[num - 1]))
-
-                elif product["genre"] == "video":
-                    self.assertTrue(product["genre"] == "video")
-                    self._videos.append(Video(product))
-                    num = len(self._videos)
-                    self.assertTrue(type(self._videos[num - 1]))
-
-                elif product["genre"] == "webpage":
-                    self.assertTrue(product["genre"] == "webpage")
-                    self._webpages.append(Webpage(product))
-                    num = len(self._webpages)
-                    self.assertTrue(type(self._webpages[num - 1]))
-
-                else:
-                    print "End of Profile"
-                    self.assertTrue("End of Profile")
-
-    # User with articles
-    def test_articles(self):
-        user = ImpactStory("Heather Piwowar")
-        self.assertTrue(user.articles)
-
-    # User with no articles
-    def test_articles(self):
-        user = ImpactStory("Saman Ehsan")
-        self.assertFalse(user.datasets)
-
-    # User with no datasets
-    def test_datasets(self):
-        user = ImpactStory("Saman Ehsan")
-        self.assertFalse(user.datasets)
-
-    def test_figures(self):
-        pass
-
-    def test_slides(self):
-        user = ImpactStory("Erica Baranski")
-        self.assertTrue(user.slides)
-
-    def test_software(self):
-        pass
-
-    def test_unknown(self):
-        pass
-
-    def test_videos(self):
-        pass
-
-    def test_webpages(self):
-        pass
-
-    def test_all(self):
-        pass
+        self.assertTrue(self.brian.articles)
+        self.assertFalse(self.brian.datasets)
+        self.assertFalse(self.brian.figures)
+        self.assertFalse(self.brian.slides)
+        self.assertTrue(self.brian.software)
+        self.assertTrue(self.brian.unknown)
+        self.assertFalse(self.brian.videos)
+        self.assertTrue(self.brian.webpages)

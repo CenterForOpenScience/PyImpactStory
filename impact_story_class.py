@@ -36,9 +36,7 @@ class ImpactStoryParseException(ImpactStoryException):
 
 class ImpactStory:
     def __init__(self, name):
-        #self._attribute_list = []
         self._new_attributes = []
-        self._unused_attributes = []
         self._articles = [] 
         self._datasets = []
         self._figures = []
@@ -56,70 +54,75 @@ class ImpactStory:
                      'videos': self._videos, 
                      'webpages': self._webpages
                      } 
-        
+
+
         name = name.replace(" ", "")
         raw = requests.get(STATIC_URL + name + "?hide=markup,awards")
-        raw_dict = raw.json()
+        self._raw_dict = raw.json()
 
         if raw.status_code == 200:
             try:
-                #self._check_changes(raw_dict)
-                self._parse_raw(raw.json())
+                self._check_changes(self._raw_dict)
+                self._parse_raw(self._raw_dict)
             except ValueError:
                 raise ImpactStoryParseException(Exception.args)
         else:
             raise ImpactStoryHTTPException(raw.status_code, raw.text)
 
-     def _check_changes(self, raw_dict):
-        # iterate through product list to check for any changes
-        for item in raw_dict["products"]:
-            self._updated_dict(item)
+    def _check_changes(self, raw_dict):
+        # check for changes in the JSON file
+        self._updated_dict(raw_dict["products"])
 
         # notify user of any changes
         if len(self._new_attributes) != 0:
-            print "WARNING: changes found in JSON file - print new attributes" \
-                  + "\nIf you are interested in getting these attributes,"\
-                  + "\nfile a bug report, otherwise continue using the library"
-        if len(self._unused_attributes) != 0:
-            print "The following attributes could not be found: " #list keys
+            new_attribute_str = "\n".join(self._new_attributes)
+
+            print ("Impactstory has added the following information since this library was last updated."
+                   + "\nIf you are interested in getting these attributes, "
+                   + "file a bug report. Otherwise continue using the library:\n"
+                   + str(new_attribute_str))
+
 
     # checks for keys added or removed from JSON
-    def _updated_dict(self, raw_dict):
-        attribute_list = ["tiid", "awardedness", "article", "dataset", "figure", "slides",\
-                  "software", "unknown", "video", "webpage", "currently_updating",\
-                  "has_percentiles", "is_true_product", "latest_diff_timestamp", \
-                  "metric_by_name", "has_metric","published_date", "best_url" "url",\
-                  "github", "altmetric_com", "doi", "pmid","uuid", "pmc", "arxiv",\
-                  "genre", "title", "authors", "year", "percentiles", "provenance_url",\
-                  "provider_name", "top_percentile", "metrics_raw_sum", "update_status",\
-                  "audience", "display_count", "display_interaction", "display_order",\
-                  "display_provider", "engagement_type", "has_new_metric", "hide_badge",\
-                  "interaction", "is_highly", "latest_nonzero_refresh_timestamp",\
-                  "metric_name", "genre", "journal", "number", "volume", "first_page",\
-                  "first_author: ", "is_oa_journal: ", "repository", "full_citation", \
-                  "published_date: ", "day", "month", "year", "full_citation_type",\
-                  "h1", "oai_id" + "free_fulltext_url", "free_fulltext_host", "create_date", \
-                  "description","last_push_date", "owner", 'channel_title']
+    def _updated_dict(self, raw):
+        attribute_list = ["_tiid", "awardedness_score", "aliases", "has_new_metric", "currently_updating",
+                  "has_percentiles", "is_true_product", "latest_diff_timestamp",
+                  "metric_by_name", "has_metrics", "best_url", "url",
+                  "github", "altmetric_com", "doi", "pmid","uuid", "pmc", "arxiv",
+                  "biblio", "genre", "genre_plural", "display_genre_plural",
+                  "title", "authors", "year", "free_fulltext_host", "published_date", "percentile",
+                  "provenance_url","provider_name", "top_percentile", "metrics_raw_sum",
+                  "update_status", "audience", "display_count", "display_interaction", "display_order",
+                  "display_provider", "engagement_type", "has_new_metric", "hide_badge",
+                  "interaction", "is_highly", "latest_nonzero_refresh_timestamp",
+                  "metric_name", "issn", "journal", "number", "volume", "first_page",
+                  "first_author", "is_oa_journal", "repository", "full_citation",
+                  "published_date", "day", "month", "year", "full_citation_type",
+                  "h1", "oai_id", "free_fulltext_url", "free_fulltext_host", "create_date",
+                  "description","last_push_date", "owner", 'channel_title', "metrics", "tiid",
+                  "display_title", "display_year", "display_authors", "markup", "is_heading",
+                  "anchor", "icon","has_metrics", "host", "mendeley_discipline", "mendeley_discipline_str",
+                  "collected_date", "diff_value", "is_refreshing", "last_modified", "calculated_genre",
+                  "calculated_host", "removed", "has_diff", "created", "last_refresh_status",
+                  "last_refresh_failure_message", "last_refresh_finished", "last_update_run", "value",
+                  "drilldown_url", "finished_successful_refresh", "last_refresh_started",
+                  "percentile_value_string", "provider", "fully_qualified_metric_name", "diff_window_length",
+                  "username", "name", "id", "authors_literal", "date", "profile_id"]
 
         # Check for keys added to the JSON file
-        for attribute in raw_dict:
-            if type(attribute) is dict:
-                self._updated_dict(attribute)
+        if type(raw) is list:
+            for item in raw:
+                if type(item) is dict or type(item) is list:
+                    self._updated_dict(item)
 
-            else:
-                if attribute not in attribute_list and attribute not in self._new_attributes:
-                    self._new_attributes.append(attribute)
+        elif type(raw) is dict:
+            for key in raw:
+                if type(raw[key]) is dict or type(raw[key]) is list:
+                    self._updated_dict(raw[key])
 
-                if type(raw_dict[attribute]) is dict or type(raw_dict[attribute]) is list:
-                    # recursive call on the sub-dict or list
-                    self._updated_dict(raw_dict[attribute])
-
-        '''
-        # Check for keys removed from the JSON file
-        for item in attribute_list:
-            if item not in raw_dict.keys():
-                item.append(self._unused_keys)
-        '''
+                else:
+                    if key not in attribute_list and key not in self._new_attributes:
+                        self._new_attributes.append(key)
         
     def _parse_raw(self, raw):
         self._parse_products(raw["products"])    
@@ -127,7 +130,7 @@ class ImpactStory:
     def _parse_products(self, products):
         for product in products:             
             if '_tiid' in product:
-                if product[""]["genre"] == "article":
+                if product["genre"] == "article":
                     self._articles.append(Article(product))          
         
                 elif product["genre"] == "dataset":
@@ -153,6 +156,10 @@ class ImpactStory:
 
                 else:
                     print ("End of Profile")
+
+    @property
+    def raw_dict(self):
+        return self._raw_dict
 
     @property
     def articles(self):

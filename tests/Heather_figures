@@ -1,0 +1,147 @@
+{
+    "figures": [
+        {
+            "_tiid": "44vl1uykjao7nv3cj1vb1iy5",
+            "aliases": {
+                "best_url": "http://figshare.com/articles/Histogram_of_GEO_data_reuse_(version_1.1)/145",
+                "doi": [
+                    "10.6084/m9.figshare.145"
+                ],
+                "tiid": "44vl1uykjao7nv3cj1vb1iy5",
+                "url": [
+                    "http://figshare.com/articles/Histogram_of_GEO_data_reuse_(version_1.1)/145"
+                ]
+            },
+            "awardedness_score": 6,
+            "biblio": {
+                "calculated_genre": "figure",
+                "calculated_host": "figshare",
+                "display_authors": null,
+                "display_title": "Histogram of GEO data reuse (version 1.1)",
+                "display_year": "2011",
+                "free_fulltext_host": null,
+                "genre": "figure",
+                "published_date": "13:45, Dec 30, 2011",
+                "repository": "figshare",
+                "title": "Histogram of GEO data reuse (version 1.1)",
+                "year": 2011
+            },
+            "created": "2014-03-28T02:06:27.087205",
+            "display_genre_plural": "figures",
+            "genre": "figure",
+            "get_metric_by_name": {},
+            "has_diff": true,
+            "has_metrics": true,
+            "host": "figshare",
+            "is_true_product": true,
+            "last_modified": "2014-05-16T03:58:03.415224",
+            "last_update_run": "2014-03-28T02:06:27.087205",
+            "latest_diff_timestamp": "2014-06-26T19:20:46.941436",
+            "mendeley_discipline": null,
+            "metric_by_name": {},
+            "metrics": [
+                {
+                    "audience": "scholars",
+                    "diff_value": 0,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 12,
+                    "display_interaction": "shares",
+                    "display_order": 100100012,
+                    "display_provider": "Figshare",
+                    "drilldown_url": "http://dx.doi.org/10.6084/m9.figshare.145",
+                    "engagement_type": "discussed",
+                    "fully_qualified_metric_name": "figshare:shares",
+                    "hide_badge": false,
+                    "interaction": "shares",
+                    "is_highly": true,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:20:46.918174",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:20:46.918174",
+                        "drilldown_url": "http://dx.doi.org/10.6084/m9.figshare.145",
+                        "percentile": {
+                            "genre": "figure",
+                            "genre_plural": "figures",
+                            "host": "figshare",
+                            "interaction": "shares",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "figshare",
+                            "value": 99,
+                            "year": "2011"
+                        },
+                        "value": 12
+                    },
+                    "percentile": {
+                        "genre": "figure",
+                        "genre_plural": "figures",
+                        "host": "figshare",
+                        "interaction": "shares",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "figshare",
+                        "value": 99,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "99th",
+                    "provider": "figshare",
+                    "provider_name": "figshare"
+                },
+                {
+                    "audience": "scholars",
+                    "diff_value": 1,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 275,
+                    "display_interaction": "views",
+                    "display_order": 100100275,
+                    "display_provider": "Figshare",
+                    "drilldown_url": "http://dx.doi.org/10.6084/m9.figshare.145",
+                    "engagement_type": "viewed",
+                    "fully_qualified_metric_name": "figshare:views",
+                    "hide_badge": false,
+                    "interaction": "views",
+                    "is_highly": true,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:20:46.941436",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:20:46.941436",
+                        "drilldown_url": "http://dx.doi.org/10.6084/m9.figshare.145",
+                        "percentile": {
+                            "genre": "figure",
+                            "genre_plural": "figures",
+                            "host": "figshare",
+                            "interaction": "views",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "figshare",
+                            "value": 77,
+                            "year": "2011"
+                        },
+                        "value": 275
+                    },
+                    "percentile": {
+                        "genre": "figure",
+                        "genre_plural": "figures",
+                        "host": "figshare",
+                        "interaction": "views",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "figshare",
+                        "value": 77,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "77th",
+                    "provider": "figshare",
+                    "provider_name": "figshare"
+                }
+            ],
+            "metrics_raw_sum": 287,
+            "profile_id": 2325,
+            "removed": null,
+            "tiid": "44vl1uykjao7nv3cj1vb1iy5",
+            "to_dict": {},
+            "to_markup_dict": {},
+            "year": "2011"
+        }
+    ]
+}

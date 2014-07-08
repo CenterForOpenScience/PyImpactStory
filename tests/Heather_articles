@@ -1,0 +1,173 @@
+{
+    "articles": [
+        {
+            "_tiid": "bsfkzv02rah0pfen6wjc7igz",
+            "aliases": {
+                "best_url": "http://dx.doi.org/10.1038/npre.2010.4267.1",
+                "doi": [
+                    "10.1038/npre.2010.4267.1"
+                ],
+                "tiid": "bsfkzv02rah0pfen6wjc7igz",
+                "url": [
+                    "http://dx.doi.org/10.1038/npre.2010.4267.1",
+                    "http://precedings.nature.com/documents/4267/version/1"
+                ]
+            },
+            "awardedness_score": 1,
+            "biblio": {
+                "authors": "Piwowar, Piwowar, Chapman",
+                "calculated_genre": "article",
+                "calculated_host": "nature",
+                "display_authors": "Piwowar, Piwowar, Chapman",
+                "display_title": "Using open access literature to guide full-text query formulation",
+                "display_year": "2010",
+                "free_fulltext_host": "dx.doi.org",
+                "free_fulltext_url": "http://dx.doi.org/10.1038/npre.2010.4267.1",
+                "is_oa_journal": "False",
+                "issn": "17560357",
+                "journal": "Nature Precedings",
+                "repository": "Nature Publishing Group",
+                "title": "Using open access literature to guide full-text query formulation",
+                "year": "2010"
+            },
+            "created": "2014-03-28T02:06:29.119544",
+            "display_genre_plural": "articles",
+            "genre": "article",
+            "get_metric_by_name": {},
+            "has_diff": false,
+            "has_metrics": true,
+            "host": "unknown",
+            "is_true_product": true,
+            "last_modified": "2014-05-16T03:58:13.651984",
+            "last_update_run": "2014-03-28T02:06:29.119544",
+            "latest_diff_timestamp": "2014-06-26T19:21:27.144138",
+            "mendeley_discipline": "Computer and Information Science",
+            "metric_by_name": {},
+            "metrics": [
+                {
+                    "audience": "scholars",
+                    "diff_value": null,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 0,
+                    "display_interaction": "disciplin",
+                    "display_order": 100000,
+                    "display_provider": "Mendeley",
+                    "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                    "engagement_type": "saved",
+                    "fully_qualified_metric_name": "mendeley:discipline",
+                    "hide_badge": true,
+                    "interaction": "discipline",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:27.115953",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:27.115953",
+                        "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                        "percentile": null,
+                        "value": [
+                            {
+                                "id": 6,
+                                "name": "Computer and Information Science",
+                                "value": 100
+                            }
+                        ]
+                    },
+                    "percentile": null,
+                    "percentile_value_string": null,
+                    "provider": "mendeley",
+                    "provider_name": "mendeley"
+                },
+                {
+                    "audience": "scholars",
+                    "diff_value": 0,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 2,
+                    "display_interaction": "readers",
+                    "display_order": 100002,
+                    "display_provider": "Mendeley",
+                    "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                    "engagement_type": "saved",
+                    "fully_qualified_metric_name": "mendeley:readers",
+                    "hide_badge": false,
+                    "interaction": "readers",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:27.144138",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:27.144138",
+                        "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                        "percentile": {
+                            "genre": "article",
+                            "genre_plural": "articles",
+                            "host": "unknown",
+                            "interaction": "readers",
+                            "mendeley_discipline": "Computer and Information Science",
+                            "mendeley_discipline_str": "Computer and Information Science",
+                            "provider": "mendeley",
+                            "value": 13,
+                            "year": "2010"
+                        },
+                        "value": 2
+                    },
+                    "percentile": {
+                        "genre": "article",
+                        "genre_plural": "articles",
+                        "host": "unknown",
+                        "interaction": "readers",
+                        "mendeley_discipline": "Computer and Information Science",
+                        "mendeley_discipline_str": "Computer and Information Science",
+                        "provider": "mendeley",
+                        "value": 13,
+                        "year": "2010"
+                    },
+                    "percentile_value_string": "13th",
+                    "provider": "mendeley",
+                    "provider_name": "mendeley"
+                },
+                {
+                    "audience": "scholars",
+                    "diff_value": null,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 0,
+                    "display_interaction": "career stag",
+                    "display_order": 100000,
+                    "display_provider": "Mendeley",
+                    "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                    "engagement_type": "saved",
+                    "fully_qualified_metric_name": "mendeley:career_stage",
+                    "hide_badge": true,
+                    "interaction": "career_stage",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:27.049486",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:27.049486",
+                        "drilldown_url": "http://www.mendeley.com/research/using-open-access-literature-guide-fulltext-query-formulation/",
+                        "percentile": null,
+                        "value": [
+                            {
+                                "name": "Doctoral Student",
+                                "value": 50
+                            },
+                            {
+                                "name": "Ph.D. Student",
+                                "value": 50
+                            }
+                        ]
+                    },
+                    "percentile": null,
+                    "percentile_value_string": null,
+                    "provider": "mendeley",
+                    "provider_name": "mendeley"
+                }
+            ],
+            "metrics_raw_sum": 2,
+            "profile_id": 2325,
+            "removed": null,
+            "tiid": "bsfkzv02rah0pfen6wjc7igz",
+            "to_dict": {},
+            "to_markup_dict": {},
+            "year": "2010"
+        }
+    ]
+}

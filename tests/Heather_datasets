@@ -1,0 +1,153 @@
+{
+    "datasets": [
+        {
+            "_tiid": "cdee1346c6b311e1aacf12313d1902c8",
+            "aliases": {
+                "best_url": "http://datadryad.org/resource/doi:10.5061/dryad.3td2f",
+                "doi": [
+                    "10.5061/dryad.3td2f"
+                ],
+                "tiid": "cdee1346c6b311e1aacf12313d1902c8",
+                "title": [
+                    "data from: public sharing of research datasets: a pilot study of associations"
+                ],
+                "url": [
+                    "http://datadryad.org/resource/doi:10.5061/dryad.3td2f",
+                    "http://datadryad.org/handle/10255/dryad.33863",
+                    "http://dx.doi.org/10.5061/dryad.3td2f",
+                    "http://hdl.handle.net/10255/dryad.33863"
+                ]
+            },
+            "awardedness_score": 1,
+            "biblio": {
+                "authors": "Piwowar, Chapman",
+                "authors_literal": "Piwowar, Heather A.; Chapman, Wendy W.",
+                "calculated_genre": null,
+                "calculated_host": "dryad",
+                "display_authors": "Piwowar, Chapman",
+                "display_title": "Data from: Public sharing of research datasets: a pilot study of associations",
+                "display_year": "2011",
+                "free_fulltext_host": null,
+                "repository": "Dryad Digital Repository",
+                "title": "Data from: Public sharing of research datasets: a pilot study of associations",
+                "year": 2011
+            },
+            "created": "2012-07-05T15:12:15.420334",
+            "display_genre_plural": "datasets",
+            "genre": "dataset",
+            "get_metric_by_name": {},
+            "has_diff": true,
+            "has_metrics": true,
+            "host": "dryad",
+            "is_true_product": true,
+            "last_modified": "2014-05-16T03:58:03.744519",
+            "last_update_run": "2014-01-26T19:47:21.109403",
+            "latest_diff_timestamp": "2014-06-26T19:21:18.296764",
+            "mendeley_discipline": null,
+            "metric_by_name": {},
+            "metrics": [
+                {
+                    "audience": "scholars",
+                    "diff_value": 5,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 617,
+                    "display_interaction": "package views",
+                    "display_order": 100617,
+                    "display_provider": "Dryad",
+                    "drilldown_url": "http://dx.doi.org/10.5061/dryad.3td2f",
+                    "engagement_type": "viewed",
+                    "fully_qualified_metric_name": "dryad:package_views",
+                    "hide_badge": false,
+                    "interaction": "package_views",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:18.296764",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:18.296764",
+                        "drilldown_url": "http://dx.doi.org/10.5061/dryad.3td2f",
+                        "percentile": {
+                            "genre": "dataset",
+                            "genre_plural": "datasets",
+                            "host": "dryad",
+                            "interaction": "package_views",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "dryad",
+                            "value": 59,
+                            "year": "2011"
+                        },
+                        "value": 617
+                    },
+                    "percentile": {
+                        "genre": "dataset",
+                        "genre_plural": "datasets",
+                        "host": "dryad",
+                        "interaction": "package_views",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "dryad",
+                        "value": 59,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "59th",
+                    "provider": "dryad",
+                    "provider_name": "dryad"
+                },
+                {
+                    "audience": "scholars",
+                    "diff_value": 3,
+                    "diff_window_length": 8,
+                    "diff_window_must_start_after": {},
+                    "display_count": 91,
+                    "display_interaction": "total downloads",
+                    "display_order": 100091,
+                    "display_provider": "Dryad",
+                    "drilldown_url": "http://dx.doi.org/10.5061/dryad.3td2f",
+                    "engagement_type": "viewed",
+                    "fully_qualified_metric_name": "dryad:total_downloads",
+                    "hide_badge": false,
+                    "interaction": "total_downloads",
+                    "is_highly": false,
+                    "latest_nonzero_refresh_timestamp": "2014-06-26T19:21:18.255659",
+                    "most_recent_snap": {
+                        "collected_date": "2014-06-26T19:21:18.255659",
+                        "drilldown_url": "http://dx.doi.org/10.5061/dryad.3td2f",
+                        "percentile": {
+                            "genre": "dataset",
+                            "genre_plural": "datasets",
+                            "host": "dryad",
+                            "interaction": "total_downloads",
+                            "mendeley_discipline": null,
+                            "mendeley_discipline_str": "",
+                            "provider": "dryad",
+                            "value": 65,
+                            "year": "2011"
+                        },
+                        "value": 91
+                    },
+                    "percentile": {
+                        "genre": "dataset",
+                        "genre_plural": "datasets",
+                        "host": "dryad",
+                        "interaction": "total_downloads",
+                        "mendeley_discipline": null,
+                        "mendeley_discipline_str": "",
+                        "provider": "dryad",
+                        "value": 65,
+                        "year": "2011"
+                    },
+                    "percentile_value_string": "65th",
+                    "provider": "dryad",
+                    "provider_name": "dryad"
+                }
+            ],
+            "metrics_raw_sum": 708,
+            "profile_id": 2325,
+            "removed": null,
+            "tiid": "cdee1346c6b311e1aacf12313d1902c8",
+            "to_dict": {},
+            "to_markup_dict": {},
+            "year": "2011"
+        }
+    ]
+}
