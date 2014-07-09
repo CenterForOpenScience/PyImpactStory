@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c59bfb06-2416-4ce5-94d2-76d9450c99f8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Brian_Products" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_Products" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_articles" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_datasets" afterPath="" />
@@ -12,19 +11,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_software" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_unknown" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Heather_video" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/Saman_Products" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/impact_product.py" afterPath="$PROJECT_DIR$/impact_product.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/impact_story_class.py" afterPath="$PROJECT_DIR$/impact_story_class.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_article.py" afterPath="$PROJECT_DIR$/tests/test_article.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_dataset.py" afterPath="$PROJECT_DIR$/tests/test_dataset.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_figure.py" afterPath="$PROJECT_DIR$/tests/test_figure.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_impactStory.py" afterPath="$PROJECT_DIR$/tests/test_impactStory.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_metric.py" afterPath="$PROJECT_DIR$/tests/test_metric.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_product.py" afterPath="$PROJECT_DIR$/tests/test_product.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_slides.py" afterPath="$PROJECT_DIR$/tests/test_slides.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_software.py" afterPath="$PROJECT_DIR$/tests/test_software.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_unknown.py" afterPath="$PROJECT_DIR$/tests/test_unknown.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_video.py" afterPath="$PROJECT_DIR$/tests/test_video.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Impact-Story.iws" />
@@ -134,7 +120,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1280" />
+    <option name="width" value="933" />
     <option name="height" value="706" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -599,7 +585,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="706" extended-state="6" />
+    <frame x="0" y="22" width="933" height="706" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -607,7 +593,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18739903" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26038158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10586319" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.12595744" order="8" side_tool="true" content_ui="tabs" />
