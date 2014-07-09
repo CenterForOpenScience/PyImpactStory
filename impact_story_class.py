@@ -30,6 +30,11 @@ class ImpactStoryHTTPException(ImpactStoryException):
 class ImpactStoryParseException(ImpactStoryException):
     pass
 
+'''
+To get ImpactStory profile data for a user,
+instantiate ImpactStory object from url extension
+(ImpactStory.from_id) or from JSON file (ImpactStory.from_file)
+'''
 
 class ImpactStory:
     def __init__(self, json_data):
@@ -93,7 +98,8 @@ class ImpactStory:
                   "last_refresh_failure_message", "last_refresh_finished", "last_update_run", "value",
                   "drilldown_url", "finished_successful_refresh", "last_refresh_started",
                   "percentile_value_string", "provider", "fully_qualified_metric_name", "diff_window_length",
-                  "username", "name", "id", "authors_literal", "date", "profile_id"]
+                  "username", "name", "id", "authors_literal", "date", "profile_id", "can_diff",
+                  "milestone_just_reached", "window_start_snap"]
 
         # Check for keys added to the JSON file
         if type(raw) is list:
@@ -144,6 +150,8 @@ class ImpactStory:
                     print ("End of Profile")
 
     @classmethod
+    # use url extension from impactstory profile as id
+    # e.g. SamanEhsan3939
     def from_id(cls, name):
         base_url = "https://impactstory.org/profile/"
         name = name.replace(" ", "")

@@ -39,7 +39,7 @@ class TestImpactStory(TestCase):
 
     # test getting JSON data from file
     def test_from_file_json(self):
-        json_file = "./fixtures/HeatherPiwowar_070814.json"
+        json_file = "./fixtures/HeatherPiwowar_070914.json"
         impact_story_obj = ImpactStory.from_file(json_file)
         self.assertIsInstance(impact_story_obj, ImpactStory)
 
@@ -57,10 +57,9 @@ class TestImpactStory(TestCase):
         ImpactStory.from_file(csv_file)
         self.assertTrue("File type is not JSON")
 
-
     # JSON with no new attributes
     def test_updated_dict(self):
-        heather_raw = "./fixtures/HeatherPiwowar_070814.json"
+        heather_raw = "./fixtures/HeatherPiwowar_070914.json"
         heather_json = open(heather_raw)
         raw_dict = json.load(heather_json)
         product_list = raw_dict.get('products', [])
@@ -69,7 +68,7 @@ class TestImpactStory(TestCase):
 
     # User with all possible product types
     def test__parse_products_all(self):
-        heather_raw = "./fixtures/HeatherPiwowar_070814.json"
+        heather_raw = "./fixtures/HeatherPiwowar_070914.json"
         heather_json = open(heather_raw)
         raw_dict = json.load(heather_json)
         product_list = raw_dict.get('products', [])

@@ -7,7 +7,7 @@ __author__ = 'ericabaranski'
 
 class TestVideo(TestCase):
     def setUp(self):
-        raw_json = open("./fixtures/HeatherPiwowar_070814.json")
+        raw_json = open("./fixtures/HeatherPiwowar_070914.json")
         raw_dict = json.load(raw_json)
         video = []
         self.product_list = raw_dict.get("products")

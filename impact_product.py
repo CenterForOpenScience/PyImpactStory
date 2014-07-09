@@ -175,10 +175,11 @@ class Metric:
         self._hide_badge = bool(raw_metrics.get('hide_badge', False))
         self._interaction = str(raw_metrics.get('interaction', ""))
         self._is_highly = bool(raw_metrics.get('is_highly', False))
+        self._milestone_just_reached = int(raw_metrics.get('milestone_just_reached', 0))
+        self._can_diff = bool(raw_metrics.get('can_diff', False))
         self._latest_nonzero_refresh_timestamp = raw_metrics.get('latest_nonzero_refresh_timestamp', None)
         if self._latest_nonzero_refresh_timestamp:
             datetime.strptime(str(self._latest_nonzero_refresh_timestamp), "%Y-%m-%dT%H:%M:%S.%f")
-
         self._percentile_value_string = raw_metrics.get('percentile_value_string', None)
         self._provider_name = str(raw_metrics.get('provider_name', ""))
         self._diff_value = raw_metrics.get('diff_value', None)
@@ -194,12 +195,26 @@ class Metric:
         self._collected_date = self._most_recent_snap.get('collected_date', None)
         if self._collected_date:
             datetime.strptime(str(self._collected_date), "%Y-%m-%dT%H:%M:%S.%f")
-        self._value = self._most_recent_snap.get('value', None) #can be int or list
+        # depending on metric type, value can be list or int
+        self._value = self._most_recent_snap.get('value', None)
+
+        # metrics from first snap
+        self._window_start_snap = dict(raw_metrics.get('window_start_snap', {}))
+        self._value = self._window_start_snap.get('value', None)
+        self._collected_date = self._window_start_snap.get('collected_date', None)
+        if self._collected_date:
+            datetime.strptime(str(self._collected_date), "%Y-%m-%dT%H:%M:%S.%f")
+        self._start_percentile = self._window_start_snap.get('percentile', None)
+        if self._start_percentile:
+            # depending on metric type, value can be list or int
+            self._start_percentile_value = self._start_percentile.get('value', None)
 
     def _parse_percentiles(self, percentiles):
         self._host = str(percentiles.get('host', ""))
         self._mendeley_discipline = percentiles.get('mendeley_discipline', None)
         self._provider = str(percentiles.get('provider', ""))
+        # depending on metric type, value can be list or int
+        self._percentile_value = percentiles.get('provider', None)
 
     def __str__(self):
         return ("\naudience: " + str(self._audience)
@@ -441,7 +456,7 @@ class Dataset(Product):
     def _parse_bib_info(self, bib_info):
         self._published_date = bib_info.get('published_date', None)
         if self._published_date:
-             datetime.strptime(str(self._published_date), "%H:%M, %b %d, %Y")
+            datetime.strptime(str(self._published_date), "%H:%M, %b %d, %Y")
         self._repository = str(bib_info.get('repository', ""))
         self._is_oa_journal = str(bib_info.get('is_oa_journal', ""))
 
@@ -519,7 +534,7 @@ class Slides(Product):
         self._username = str(bib_info.get('username', ""))
         self._published_date = bib_info.get('published_date', None)
         if self._published_date:
-            datetime.strptime(str(self._published_date), "%H:%M, %b %d, %Y")
+            datetime.strptime(str(self._published_date), "%Y-%m-%dT%H:%M:%SZ")
 
     def __str__(self):
         return unicode("genre: " + str(self._genre)
@@ -555,12 +570,12 @@ class Software(Product):
     def _parse_bib_info(self, bib_info):
         self._create_date = bib_info.get('create_date', None)
         if self._create_date:
-            datetime.strptime(str(self._create_date), "%Y-%m-%dT%H:%M:%S.%f")
+            datetime.strptime(str(self._create_date), "%Y-%m-%dT%H:%M:%SZ")
 
         self._description = str(bib_info.get('description', ""))
         self._last_push_date = bib_info.get('last_push_date', None)
         if self._last_push_date:
-            datetime.strptime(str(self._last_push_date), "%Y-%m-%dT%H:%M:%S.%f")
+            datetime.strptime(str(self._last_push_date), "%Y-%m-%dT%H:%M:%SZ")
         self._owner = str(bib_info.get('owner', ""))
 
     def __str__(self):
@@ -654,10 +669,13 @@ class Video(Product):
         self._parse_bib_info(bib_info)
 
     def _parse_bib_info(self, bib_info):
+        self._repository = str(bib_info.get('repository', ""))
         self._published_date = bib_info.get('published_date', None)
         if self._published_date:
-            datetime.strptime(str(self._published_date), "%H:%M, %b %d, %Y")
-        self._repository = str(bib_info.get('repository', ""))
+            if self._repository == "YouTube":
+                datetime.strptime(str(self._published_date), "%Y-%m-%dT%H:%M:%S.%fZ")
+            elif self._repository == "Vimeo":
+                datetime.strptime(str(self._published_date), "%Y-%m-%d %H:%M:%S")
         self._channel_title = str(bib_info.get('channel_title', ""))
 
     def __str__(self):
