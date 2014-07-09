@@ -9,9 +9,6 @@ from impact_product import Webpage
 from impact_product import Video
 from impact_product import Software
 
-
-STATIC_URL = "https://impactstory.org/profile/"
-
 '''
 ImpactStory Class 
 Retrieves JSON file from ImpactStory user profile,
@@ -53,25 +50,11 @@ class ImpactStory:
                      'unknown': self._unknown,
                      'videos': self._videos, 
                      'webpages': self._webpages
-                     } 
+                     }
 
-
-        name = name.replace(" ", "")
-        raw = requests.get(STATIC_URL + name + "?hide=markup,awards")
-        self._raw_dict = raw.json()
-
-        # comment above out and start assuming it's json
-        # self._raw_dict = json.loads(json_data)
-
-
-        if raw.status_code == 200:
-            try:
-                self._check_changes(self._raw_dict)
-                self._parse_raw(self._raw_dict)
-            except ValueError:
-                raise ImpactStoryParseException(Exception.args)
-        else:
-            raise ImpactStoryHTTPException(raw.status_code, raw.text)
+        self._raw_dict = json_data
+        self._check_changes(self._raw_dict)
+        self._parse_raw(self._raw_dict)
 
     def _check_changes(self, raw_dict):
         # check for changes in the JSON file
@@ -85,7 +68,6 @@ class ImpactStory:
                    + "\nIf you are interested in getting these attributes, "
                    + "file a bug report. Otherwise continue using the library:\n"
                    + str(new_attribute_str))
-
 
     # checks for keys added or removed from JSON
     def _updated_dict(self, raw):
@@ -163,20 +145,33 @@ class ImpactStory:
 
     @classmethod
     def from_id(cls, name):
-        # make request
-        # get request.json
-        obj = ImpactStory(res.json())
+        base_url = "https://impactstory.org/profile/"
+        name = name.replace(" ", "")
+        raw = requests.get(base_url + name + "?hide=markup,awards")
+
+        if raw.status_code == 200:
+            try:
+                obj = ImpactStory(raw.json())
+            except ValueError:
+                raise ImpactStoryParseException(Exception.args)
+        else:
+            raise ImpactStoryHTTPException(raw.status_code, raw.text)
+
         return obj
+
 
     @classmethod
     def from_file(cls, json_file):
-        '''
-            is = ImpactStory.from_file('tests/fixtures/jsonfilename.json')
-        '''
-        # read file,
-        with open(fi, 'r'):
-            obj = ImpactStory(fi.read())
-            return obj
+        if json_file.endswith('.json'):
+            raw_json = open(json_file)
+            try:
+                raw_dict = json.load(raw_json)
+                obj = ImpactStory(raw_dict)
+                return obj
+            except ValueError:
+                    raise ImpactStoryParseException(Exception.args)
+        else:
+            print "File type is not JSON"
 
     @property
     def raw_dict(self):

@@ -1,0 +1,121 @@
+{
+    "about": {
+        "academia_edu_id": null,
+        "collection_id": null,
+        "created": "2014-06-24T20:41:38.797139",
+        "email_hash": "c142fc14c70c5a03b20c3674f8c7ba72",
+        "figshare_id": null,
+        "github_id": null,
+        "given_name": "Saman",
+        "google_scholar_id": null,
+        "id": 12126,
+        "is_advisor": null,
+        "is_refreshing": false,
+        "last_email_check": "2014-06-24T20:41:38.797161",
+        "last_email_sent": null,
+        "last_refreshed": "2014-07-02T20:49:20.986660",
+        "last_viewed_profile": null,
+        "linked_accounts": [
+            {
+                "profile_url": null,
+                "service": "slideshare",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "github",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "figshare",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "twitter",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "linkedin",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "orcid",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "mendeley",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "academia_edu",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "researchgate",
+                "username": null
+            },
+            {
+                "profile_url": null,
+                "service": "google_scholar",
+                "username": null
+            }
+        ],
+        "linkedin_id": null,
+        "mendeley_id": null,
+        "new_metrics_notification_dismissed": null,
+        "notification_email_frequency": "none",
+        "orcid_id": null,
+        "products_count": 0,
+        "researchgate_id": null,
+        "slideshare_id": null,
+        "stripe_id": "cus_4HZt5sKRHAtd45",
+        "surname": "Ehsan",
+        "twitter_id": null,
+        "url_slug": "SamanEhsan"
+    },
+    "awards": [
+        {
+            "award_badge": false,
+            "bins": [
+                0.8,
+                0.5,
+                0.3,
+                0.1
+            ],
+            "bottom_level": 5,
+            "call_to_action": "To add more, click any article missing the <i class='icon-unlock-alt'></i> icon and add links to free fulltext.",
+            "extra": {
+                "articles_count": 0,
+                "needed_for_next_level_product_page": "Get the Open Access badge by adding free fulltext to this and -1 more articles.",
+                "oa_articles_count": 0,
+                "oa_articles_proportion": 0
+            },
+            "is_bottom_level": true,
+            "is_perfect": false,
+            "level": 5,
+            "level_cutoff": null,
+            "level_justification": "0% of 0 listed articles free for anyone to read.",
+            "level_name": "None",
+            "level_names": [
+                "Gold",
+                "Silver",
+                "Bronze",
+                "Basic",
+                "None"
+            ],
+            "name": "Open Access",
+            "needed_for_next_level": "You're just 0 freely-readable articles away from Basic level.",
+            "next_level_cutoff": 0.1,
+            "next_level_name": "Basic",
+            "timestamp": 1404868724
+        }
+    ],
+    "products": []
+}

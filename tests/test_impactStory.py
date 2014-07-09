@@ -1,5 +1,9 @@
 from unittest import TestCase
 from impact_story_class import ImpactStory
+from impact_story_class import ImpactStoryException
+from impact_story_class import ImpactStoryHTTPException
+from impact_story_class import ImpactStoryParseException
+
 from impact_product import Article
 from impact_product import Dataset
 from impact_product import Figure
@@ -17,40 +21,58 @@ __author__ = 'saman'
 class TestImpactStory(TestCase):
 
     def setUp(self):
-        self.heather = ImpactStory("Heather Piwowar")
-        self.saman = ImpactStory("Saman Ehsan")
-        self.brian = ImpactStory("Brian Nosek")
-        self.raw = requests.get("https://impactstory.org/profile/HthrPwr?hide=markup,awards")
+        self.heather = ImpactStory.from_id("Heather Piwowar")
+        self.saman = ImpactStory.from_id("Saman Ehsan")
+        self.brian = ImpactStory.from_id("Brian Nosek")
 
-    # tests making a GET request given an incorrect name
-    def test_wrong_username(self):
-        class ImpactStoryException(Exception):
-            pass
+    # test for valid username
+    def test_from_id_valid(self):
+        impact_story_obj = ImpactStory.from_id("Heather Piwowar")
+        self.assertIsInstance(impact_story_obj, ImpactStory)
 
-        class ImpactStoryHTTPException(ImpactStoryException):
-            def __init__(self, status_code, msg):
-                self.status_code = status_code
-                self.msg = msg
+    # test for invalid username
+    def test_from_id_invalid(self):
+        with self.assertRaises(ImpactStoryHTTPException) as cm:
+            ImpactStory.from_id("Htr Pwr")
+        exception = cm.exception
+        self.failUnlessRaises(exception)
 
-        class ImpactStoryParseException(ImpactStoryException):
-            pass
+    # test getting JSON data from file
+    def test_from_file_json(self):
+        json_file = "./fixtures/HeatherPiwowar_070814.json"
+        impact_story_obj = ImpactStory.from_file(json_file)
+        self.assertIsInstance(impact_story_obj, ImpactStory)
 
-        self.failUnlessRaises(ImpactStoryHTTPException(self.raw.status_code, self.raw.text))
+    # test corrupted JSON file
+    def test_from_file_corrupted(self):
+        corrupted_json = "./fixtures/Corrupted_JSON.json"
+        with self.assertRaises(ImpactStoryParseException) as cm:
+            ImpactStory.from_file(corrupted_json)
+        exception = cm.exception
+        self.failUnlessRaises(exception)
+
+    # test wrong file type
+    def test_from_file_csv(self):
+        csv_file = "./fixtures/HeatherPiwowar_070814.csv"
+        ImpactStory.from_file(csv_file)
+        self.assertTrue("File type is not JSON")
+
 
     # JSON with no new attributes
     def test_updated_dict(self):
-        product_json = open('Heather_Products')
-        product_dict = json.load(product_json)
-        product_list = product_dict.get('products', None)
+        heather_raw = "./fixtures/HeatherPiwowar_070814.json"
+        heather_json = open(heather_raw)
+        raw_dict = json.load(heather_json)
+        product_list = raw_dict.get('products', [])
         ImpactStory._updated_dict(self.heather, product_list)
         self.assertFalse(self.heather._new_attributes)
 
-
     # User with all possible product types
     def test__parse_products_all(self):
-        product_json = open('Heather_Products')
-        product_dict = json.load(product_json)
-        product_list = product_dict.get('products', None)
+        heather_raw = "./fixtures/HeatherPiwowar_070814.json"
+        heather_json = open(heather_raw)
+        raw_dict = json.load(heather_json)
+        product_list = raw_dict.get('products', [])
         ImpactStory._parse_products(self.heather, product_list)
 
         self.assertTrue(self.heather.articles)
@@ -64,9 +86,10 @@ class TestImpactStory(TestCase):
 
     # User with no products
     def test__parse_products_none(self):
-        product_json = open('Saman_Products')
+        saman_raw = "./fixtures/SamanEhsan_070814.json"
+        product_json = open(saman_raw)
         product_dict = json.load(product_json)
-        product_list = product_dict.get('products', None)
+        product_list = product_dict.get('products', [])
         ImpactStory._parse_products(self.saman, product_list)
 
         self.assertFalse(self.saman.articles)
@@ -80,7 +103,8 @@ class TestImpactStory(TestCase):
 
     # Typical user
     def test__parse_products(self):
-        product_json = open('Brian_Products')
+        brian_raw = "./fixtures/BrianNosek_070814.json"
+        product_json = open(brian_raw)
         product_dict = json.load(product_json)
         product_list = product_dict.get('products', None)
         ImpactStory._parse_products(self.brian, product_list)
