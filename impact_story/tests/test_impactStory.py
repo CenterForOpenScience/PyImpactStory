@@ -1,18 +1,8 @@
 from unittest import TestCase
-from impact_story_class import ImpactStory
-from impact_story_class import ImpactStoryException
-from impact_story_class import ImpactStoryHTTPException
-from impact_story_class import ImpactStoryParseException
-
-from impact_product import Article
-from impact_product import Dataset
-from impact_product import Figure
-from impact_product import Slides
-from impact_product import Software
-from impact_product import Unknown
-from impact_product import Video
-from impact_product import Webpage
-import requests
+from impact_story.impact_story import ImpactStory
+from impact_story.impact_story import ImpactStoryException
+from impact_story.impact_story import ImpactStoryHTTPException
+from impact_story.impact_story import ImpactStoryParseException
 import json
 
 __author__ = 'saman'
@@ -22,7 +12,7 @@ class TestImpactStory(TestCase):
 
     def setUp(self):
         self.heather = ImpactStory.from_id("Heather Piwowar")
-        self.saman = ImpactStory.from_id("Saman Ehsan")
+        self.saman = ImpactStory.from_file("./fixtures/SamanEhsan_070814.json")
         self.brian = ImpactStory.from_id("Brian Nosek")
 
     # test for valid username

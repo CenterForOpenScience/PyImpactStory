@@ -1,5 +1,5 @@
 from unittest import TestCase
-from impact_product import Article
+from impact_story.products.article import Article
 import json
 from datetime import datetime
 
@@ -23,7 +23,7 @@ class TestArticle(TestCase):
         Article._parse_bib_info(self.a, bib)
 
         self.assertEquals(self.a.issn, "17511577")
-        self.assertEquals(self.a._journal, unicode("Journal of Informetrics"))
+        self.assertEquals(self.a._journal, unicode("Journal of informetrics"))
         self.assertEquals(self.a._number, "")
         self.assertEquals(self.a._volume, "")
         self.assertEquals(self.a._first_page, "")

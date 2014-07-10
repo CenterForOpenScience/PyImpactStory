@@ -1,5 +1,5 @@
 from unittest import TestCase
-from impact_product import Software
+from impact_story.products.software import Software
 import json
 
 __author__ = 'ericabaranski'

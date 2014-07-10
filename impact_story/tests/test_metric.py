@@ -1,7 +1,7 @@
 from unittest import TestCase
 import json
-from impact_product import Metric
-from impact_product import Product
+from impact_story.products.metric import Metric
+
 __author__ = 'ericabaranski'
 
 

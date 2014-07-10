@@ -1,16 +1,16 @@
 import json
 import requests
-from impact_product import Article
-from impact_product import Dataset
-from impact_product import Figure
-from impact_product import Slides
-from impact_product import Unknown
-from impact_product import Webpage
-from impact_product import Video
-from impact_product import Software
+from products.article import Article
+from products.dataset import Dataset
+from products.figure import Figure
+from products.slides import Slides
+from products.unknown import Unknown
+from products.webpage import Webpage
+from products.video import Video
+from products.software import Software
 
 '''
-ImpactStory Class 
+ImpactStory
 Retrieves JSON file from ImpactStory user profile,
 converts JSON to python dict, parses "projects" 
 dict & instantiates "project" objects (i.e. articles, datasets, figures) 
@@ -35,6 +35,7 @@ To get ImpactStory profile data for a user,
 instantiate ImpactStory object from url extension
 (ImpactStory.from_id) or from JSON file (ImpactStory.from_file)
 '''
+
 
 class ImpactStory:
     def __init__(self, json_data):

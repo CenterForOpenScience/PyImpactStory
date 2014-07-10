@@ -1,5 +1,5 @@
 from unittest import TestCase
-from impact_product import Figure
+from impact_story.products.figure import Figure
 import json
 
 __author__ = 'ericabaranski'
