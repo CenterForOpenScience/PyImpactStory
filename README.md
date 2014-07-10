@@ -9,21 +9,21 @@ previously listed) that a user has produced throughout their career and added to
 previously stated, this library enables the extraction of these "products" and their bibliographic and
 metric information.
 
-To access product information for an Impactstory user::
+To access product information for an Impactstory user:
 
-    from impact_story import ImpactStory
+    from PyImpactStory.impact_story.impact_story import ImpactStory
 
 Create an ImpactStory object from either the JSON file or directly from the user's url extension::
 
     username = ImpactStory.from_file(file.json)
     username = ImpactStory.from_id("HeatherPiwowar")
 
-Products are sorted into lists based on product type. Thus, to access product and product information by type::
+Products are sorted into lists based on product type. Thus, to access product and product information by type:
 
     article_list = user.articles
     article = article_list[0]
 
-To access specific bibliographic information for any given product such as its title, published date or author::
+To access specific bibliographic information for any given product such as its title, published date or author:
 
     article.title
     article.published_date

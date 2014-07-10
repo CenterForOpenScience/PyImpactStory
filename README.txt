@@ -1,6 +1,6 @@
-============
-ImpactStory
-============
+=============
+PyImpactStory
+=============
 
 Python library for ImpactStory. This tool parses the provided JSON file for a given Impactstory user in order to extract
 bibliographic information and metric data for each of their professional "Products". ImpactStory defines a "Product"
@@ -11,7 +11,7 @@ metric information.
 
 To access product information for an Impactstory user::
 
-    from impact_story import ImpactStory
+    from PyImpactStory.impact_story.impact_story import ImpactStory
 
 Create an ImpactStory object from either the JSON file or directly from the user's url extension::
 

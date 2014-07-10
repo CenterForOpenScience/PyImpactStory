@@ -1,17 +1,17 @@
 from setuptools import setup
 
 setup(
-    name='ImpactStory',
+    name='PyImpactStory',
     version='0.1.0',
     author='Saman Ehsan and Erica Baranski',
     author_email='se8ea@virginia.edu and ericanbaranski@gmail.com',
     packages=['impact_story', 'impact_story.tests', 'impact_story.products'],
-    url='http://pypi.python.org/pypi/ImpactStory/',
+    url='http://pypi.python.org/pypi/PyImpactStory/',
     license='LICENSE.txt',
     description='Python library for parsing impactstory profile information.',
     long_description=open('README.txt').read(),
     install_requires=[
-        'requests >= 2.3.0',
+        'requests == 2.3.0',
     ],
 )
 
