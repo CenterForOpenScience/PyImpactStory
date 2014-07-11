@@ -10,8 +10,8 @@ from products.video import Video
 from products.software import Software
 
 '''
-PyImpactStory
-Retrieves JSON file from PyImpactStory user profile,
+ImpactStory
+Retrieves JSON file from ImpactStory user profile,
 converts JSON to python dict, parses "projects" 
 dict & instantiates "project" objects (i.e. articles, datasets, figures) 
 '''
@@ -31,9 +31,9 @@ class ImpactStoryParseException(ImpactStoryException):
     pass
 
 '''
-To get PyImpactStory profile data for a user,
-instantiate PyImpactStory object from url extension
-(PyImpactStory.from_id) or from JSON file (PyImpactStory.from_file)
+To get ImpactStory profile data for a user,
+instantiate ImpactStory object from url extension
+(ImpactStory.from_id) or from JSON file (ImpactStory.from_file)
 '''
 
 
